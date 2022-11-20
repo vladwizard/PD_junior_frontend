@@ -34,26 +34,26 @@ function CreateUserList() {
         data.forEach(user => {
             let newLine = CreateDropOutLine(user.name);
 
-            newLine.children[0].onclick = () => {
+            newLine.children[0].onclick = async () => {
                 if (newLine.childElementCount == 1) {
                     let marker = newLine.querySelector('.marker');
                     marker.style = 'background: #FFAF37;'
                     marker.innerText = '-'
                     let dropped = document.createElement('div');
+                    newLine.append(dropped)
                     dropped.className = 'dropped'
                     dropped.style = centerFlexChildren
                     LoadCicle(dropped)
-                    console.log(user.id)
                     let albums = fetch('https://json.medrating.org/albums?userId=' + user.id).then((response) => {
                         return response.json();
                     })
+                    await albums;
+                    dropped.style = ''
+                    dropped.innerHTML = ''
                     albums.then(data => {
                         console.log(data)
-                        dropped.style = ''
-                        dropped.innerHTML = ''
-                        data.forEach(album => dropped.append(CreateDropOutLine(album.title, null)))
+                        data.forEach(album => dropped.append(CreateDropOutLine(album.title)))
                     })
-                    newLine.append(dropped)
                 }
                 else {
                     let marker = newLine.querySelector('.marker');
@@ -95,4 +95,9 @@ function LoadCicle(parent) {
     parent.innerHTML = `<img id="loadCicle" src="/статика/ezgif-6-72ed6200d8f7.gif">`
 }
 
-console.log(sectionsButtons)
+function fictivePrimise(){
+    return new Promise((resolve, reject) => {
+        setTimeout(resolve, 2000);
+    });
+}
+
