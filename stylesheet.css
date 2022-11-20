@@ -1,0 +1,95 @@
+body{
+    background: #E4EFF7;
+    padding: 50px;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+.flexRow{
+    display: flex;
+    flex-direction: row;
+}
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+}
+#mainBlock{
+    margin: auto;
+    width: 936px;
+    min-height: 887px;
+}
+#mainBlock header {
+    height: 55px;
+}
+#mainBlock header button{
+    background: rgba(255, 255, 255, 0.5);
+    width: 50%;
+    border-radius: 8px 8px 0px 0px;
+    border: 0;
+    color:  #1C1C1C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+
+}
+#mainBlock header .active{
+    background: white;
+}
+#mainBlock header button img{
+    fill: #1C1C1C;
+}
+#mainBlock > section{
+    flex: 1;
+    background: white;
+    box-shadow: 0px 13px 19px rgba(105, 172, 201, 0.24);
+    border-radius: 0px 0px 8px 8px;
+}
+.dropOutLine{
+    min-height: 80px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    padding-left: 72px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+}
+.dropOutLine .marker{
+    background: #117DC1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    color: white;
+    width: 32px;
+    height: 32px;
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+}
+.dropOutLine .droppedMark{
+    background: #FFAF37;
+}
+.dropped{
+    min-height: 328px;
+    margin-left: 66px;
+}
+
+#loadCicle{
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: auto;
+}
