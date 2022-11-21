@@ -93,3 +93,36 @@
     display: block;
     margin: auto;
 }
+.thumbnaiUrlArea{
+    margin: auto;
+    width: 534px;
+    padding: 32px 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 42px;
+}
+.thumbnaiUrlArea img{
+    width: 150px;
+    height: 150px;
+}
+.foggingScreen{
+    top: 0;
+    background: rgba(0, 0, 0, 0.47);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.foggingScreen button{
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background: url("/images/cross.svg");
+    border: none;
+} 
