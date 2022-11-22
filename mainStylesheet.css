@@ -88,17 +88,6 @@ p{
     line-height: 130%;
 }
 .dropOutLine .marker {
-    background: #117dc1;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    color: white;
-    width: 32px;
-    height: 32px;
-
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 .dropOutLine .droppedMark {
@@ -131,6 +120,7 @@ p{
     display: flex;
     flex-direction: row-reverse;
 }
+
 .titleThumbilPhoto {
     font-weight: 400;
     font-size: 14px;
@@ -164,7 +154,7 @@ p{
     right: 40px;
     width: 26px;
     height: 26px;
-    background: url("/images/cross.svg");
+    background: url("./images/cross.svg");
     border: none;
 }
 .favoritesListEmty {
