@@ -1,72 +1,94 @@
-.wrapper{
-    background: #E4EFF7;
-    padding: 50px;
+body {
+    background: #e4eff7;
+
+    font-family: "Roboto";
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    padding: 56px 0;
 }
-*{
+* {
     padding: 0;
     margin: 0;
 }
-.flexRow{
+h1{
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 130%;
+}
+h2{
+    font-weight: 400;
+font-size: 18px;
+line-height: 130%;
+}
+h6{
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 130%;
+}
+p{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+}
+.flexRow {
     display: flex;
     flex-direction: row;
 }
-.flexColumn{
+.flexColumn {
     display: flex;
     flex-direction: column;
 }
-#mainBlock{
-    margin: auto;
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainBlock {
     width: 936px;
     min-height: 887px;
 }
 #mainBlock header {
     height: 55px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
 }
-#mainBlock header button{
+#mainBlock header button {
     background: rgba(255, 255, 255, 0.5);
-    width: 50%;
+    height: inherit;
     border-radius: 8px 8px 0px 0px;
     border: 0;
-    color:  #1C1C1C;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #1c1c1c;
     gap: 8px;
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 130%;
-
 }
-#mainBlock header .active{
+#mainBlock header .active {
     background: white;
 }
-#mainBlock header button img{
-    fill: #1C1C1C;
-}
-#mainBlock > section{
+
+#mainBlock > section {
     flex: 1;
     background: white;
     box-shadow: 0px 13px 19px rgba(105, 172, 201, 0.24);
     border-radius: 0px 0px 8px 8px;
 }
-.dropOutLine{
+.dropOutLine {
     min-height: 80px;
     display: flex;
     gap: 32px;
     align-items: center;
     padding-left: 72px;
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 500;
     font-size: 22px;
     line-height: 130%;
 }
-.dropOutLine .marker{
-    background: #117DC1;
+.dropOutLine .marker {
+    background: #117dc1;
 
     display: flex;
     align-items: center;
@@ -77,52 +99,93 @@
     width: 32px;
     height: 32px;
 
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.dropOutLine .droppedMark{
-    background: #FFAF37;
+.dropOutLine .droppedMark {
+    background: #ffaf37;
 }
-.dropped{
+.dropped {
     min-height: 328px;
     margin-left: 66px;
 }
 
-#loadCicle{
+.loadCicle {
     width: 48px;
     height: 48px;
     display: block;
     margin: auto;
 }
-.thumbnaiUrlArea{
+.thumbnailPhotoArea {
     margin: auto;
     width: 534px;
     padding: 32px 0;
 
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
     gap: 42px;
 }
-.thumbnaiUrlArea img{
+.thumbnailPhoto {
     width: 150px;
     height: 150px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row-reverse;
 }
-.foggingScreen{
+.titleThumbilPhoto {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+
+    color: #787878;
+}
+.favoriteButton {
+    width: 32px;
+    height: 32px;
+    background: white;
+
+    margin: 8px;
+    border-radius: 50%;
+}
+.favoriteButton > svg {
+    fill: #d0d0d0;
+}
+
+.foggingScreen {
     top: 0;
     background: rgba(0, 0, 0, 0.47);
     position: absolute;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
-.foggingScreen button{
+.foggingScreen button {
     position: absolute;
     top: 32px;
     right: 40px;
-    position: absolute;
     width: 26px;
     height: 26px;
     background: url("/images/cross.svg");
     border: none;
-} 
+}
+.favoritesListEmty {
+    padding-bottom: 72px;
+}
+.favoritesListEmty img{
+    width: 264px;
+    height: 198px;
+    margin: auto;
+}
+.favoritesListEmty h6 {
+    margin-top: 32px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 130%;
+    text-align: center;
+}
+.favoritesListEmty p {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 130%;
+    text-align: center;
+}
