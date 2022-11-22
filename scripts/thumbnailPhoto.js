@@ -57,6 +57,8 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
             favoritePhotos.push(photo)
 
             favoriteButton.children[0].style = 'fill: #FFAF37;'
+
+
         }
         SetCoockieFavoritePhotos(favoritePhotos)
 

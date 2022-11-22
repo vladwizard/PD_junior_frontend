@@ -11,22 +11,22 @@ body {
     padding: 0;
     margin: 0;
 }
-h1{
+h1 {
     font-weight: 500;
     font-size: 22px;
     line-height: 130%;
 }
-h2{
+h2 {
     font-weight: 400;
-font-size: 18px;
-line-height: 130%;
+    font-size: 18px;
+    line-height: 130%;
 }
-h6{
+h6 {
     font-weight: 700;
     font-size: 22px;
     line-height: 130%;
 }
-p{
+p {
     font-weight: 400;
     font-size: 18px;
     line-height: 130%;
@@ -146,7 +146,6 @@ p{
     position: absolute;
     width: 100vw;
     height: 100vh;
-
 }
 .foggingScreen button {
     position: absolute;
@@ -160,7 +159,7 @@ p{
 .favoritesListEmty {
     padding-bottom: 72px;
 }
-.favoritesListEmty img{
+.favoritesListEmty img {
     width: 264px;
     height: 198px;
     margin: auto;

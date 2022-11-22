@@ -11,7 +11,7 @@ export default function CreateUserList(parent) {
     users.then((data) => {
         parent.className = ''
         parent.innerHTML = ''
-        parent.style = 'padding: 16px 0'
+        parent.className= 'padding: 16px 0'
 
         data.forEach(user => {
             let newLine = CreateDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id, (data, parent) => data.forEach(album => {
