@@ -14,6 +14,7 @@ b) Если фотография в избранном - она удаляетс
 5. Переключение между вкладками происходит без перезагрузки страниц.
 ![image](https://user-images.githubusercontent.com/72702845/203412403-9138b94e-affd-40bf-b2b8-7942468965b1.png)
 ![image](https://user-images.githubusercontent.com/72702845/203412540-5f6648b8-8df8-401e-ad2f-5e71c05f9567.png)
+![image](https://user-images.githubusercontent.com/72702845/203414607-ed06eecb-5e8c-4078-aefe-643e541bb9f1.png)
 ![image](https://user-images.githubusercontent.com/72702845/203412587-88b6b63f-34d7-48da-861b-7d469364029e.png)
 
 # ОБЩИЕ ТРЕБОВАНИЯ:
