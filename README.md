@@ -12,8 +12,10 @@ b) Если фотография в избранном - она удаляетс
 4. Приложение запоминает избранные фотографии даже после перезагрузки
 страницы.
 5. Переключение между вкладками происходит без перезагрузки страниц.
-![Screenshot 2022-11-22 15 10 59](https://user-images.githubusercontent.com/72702845/203310685-d4c27ef1-2f94-44b3-922a-9866b891611e.png)
-![Screenshot 2022-11-22 15 11 10](https://user-images.githubusercontent.com/72702845/203310725-fdf53c88-452d-4be9-99b3-aec57078b202.png)
+![image](https://user-images.githubusercontent.com/72702845/203412403-9138b94e-affd-40bf-b2b8-7942468965b1.png)
+![image](https://user-images.githubusercontent.com/72702845/203412540-5f6648b8-8df8-401e-ad2f-5e71c05f9567.png)
+![image](https://user-images.githubusercontent.com/72702845/203412587-88b6b63f-34d7-48da-861b-7d469364029e.png)
+
 # ОБЩИЕ ТРЕБОВАНИЯ:
 1. Приложение должно работать в chrome и firefox.
 2. Запрещено использовать любые библиотеки.
