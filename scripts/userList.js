@@ -20,13 +20,12 @@ export default function CreateUserList(parent) {
     users.then((data) => {
         parent.className = ''
         parent.innerHTML = ''
-        parent.style = 'padding: 16px 0'
-
+        parent.style = 'padding: 16px 0px 16px 8px'
         data.forEach(user => {
-            let newLine = CreateDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
+            let newLine = CreateDropOutLine(1, user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
 
                 (data, parent) => data.forEach(album => {
-                    parent.append(CreateDropOutLine(album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
+                    parent.append(CreateDropOutLine(2, album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
                         (data, parent) => {
                             parent.className = 'thumbnailPhotoArea'
                             let favoriteids = GetCoockieFavoritePhotos().map((photo) => { return photo.id })
@@ -38,7 +37,8 @@ export default function CreateUserList(parent) {
                         }
                     ))
                 })
-                );
+
+            );
 
             parent.append(newLine)
         })
@@ -49,13 +49,14 @@ export default function CreateUserList(parent) {
     })
 }
 
-function CreateDropOutLine(innerText, tagText, requestUrl, GenerateContent) {
+function CreateDropOutLine(attachmentIndex, innerText, tagText, requestUrl, GenerateContent) {
     let container = document.createElement('div')
     container.className = "flexColumn"
 
     let textLine = document.createElement('div')
     container.append(textLine)
     textLine.className = 'dropOutLine'
+    textLine.style = 'margin-left:' + 64 * attachmentIndex + 'px'
 
     let marker = document.createElement('img')
     marker.className = 'marker'

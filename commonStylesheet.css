@@ -1,17 +1,19 @@
 html {
+    /* антисмещение при появлении scrollbar */
     margin-right: calc(-1 * (100vw - 100%));
-}
-body {
-    background: #e4eff7;
+    overflow-x: hidden;
 
     font-family: "Roboto";
     font-style: normal;
-    padding: 56px 0;
+}
+body {
+    background: #e4eff7;
 }
 * {
     padding: 0;
     margin: 0;
 }
+
 h1 {
     font-weight: 500;
     font-size: 22px;
@@ -32,6 +34,7 @@ p {
     font-size: 18px;
     line-height: 130%;
 }
+
 .flexRow {
     display: flex;
     flex-direction: row;
@@ -48,19 +51,23 @@ p {
 
 #mainBlock {
     width: 936px;
-    min-height: 887px;
+    margin: 56px 0;
 }
+
 #mainBlock header {
     height: 55px;
     display: grid;
     grid-template-columns: repeat(2, auto);
 }
 #mainBlock header button {
-    background: rgba(255, 255, 255, 0.5);
     height: inherit;
+
+    background: rgba(255, 255, 255, 0.5);
+    color: #1c1c1c;
+
     border-radius: 8px 8px 0px 0px;
     border: 0;
-    color: #1c1c1c;
+
     gap: 8px;
 
     font-weight: 400;
@@ -72,17 +79,17 @@ p {
 }
 
 #mainBlock > section {
-    flex: 1;
+    min-height: 832px;
     background: white;
     box-shadow: 0px 13px 19px rgba(105, 172, 201, 0.24);
     border-radius: 0px 0px 8px 8px;
 }
+
 .dropOutLine {
     min-height: 80px;
     display: flex;
-    gap: 32px;
     align-items: center;
-    margin: 0 72px;
+    gap: 32px;
 
     font-weight: 500;
     font-size: 22px;
@@ -91,20 +98,10 @@ p {
 .dropOutLine .marker {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
-.dropOutLine .droppedMark {
-    background: #ffaf37;
-}
 .dropped {
     min-height: 328px;
-    margin-left: 66px;
 }
 
-.loadCicle {
-    width: 48px;
-    height: 48px;
-    display: block;
-    margin: auto;
-}
 .thumbnailPhotoArea {
     margin: auto;
     width: 534px;
@@ -121,7 +118,6 @@ p {
     display: flex;
     flex-direction: row-reverse;
 }
-
 .titleThumbilPhoto {
     font-weight: 400;
     font-size: 14px;
@@ -129,6 +125,7 @@ p {
 
     color: #787878;
 }
+
 .favoriteButton {
     width: 32px;
     height: 32px;
@@ -157,6 +154,7 @@ p {
     background: url("./images/cross.svg");
     border: none;
 }
+
 .favoritesListEmty {
     padding-bottom: 72px;
 }
@@ -178,4 +176,11 @@ p {
     font-size: 18px;
     line-height: 130%;
     text-align: center;
+}
+
+.loadCicle {
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: auto;
 }
