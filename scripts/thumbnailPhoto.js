@@ -31,6 +31,7 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
         photoFullRes.src = photo.url
     }
     let favoriteButton = document.createElement('div')
+    favoriteButton.title = ''
     photoEl.append(favoriteButton);
     favoriteButton.innerHTML = filledStar
     favoriteButton.className = 'favoriteButton flexCenter'

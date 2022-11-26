@@ -81,7 +81,7 @@ p {
     display: flex;
     gap: 32px;
     align-items: center;
-    padding-left: 72px;
+    margin: 0 72px;
 
     font-weight: 500;
     font-size: 22px;
