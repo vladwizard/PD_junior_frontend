@@ -1,6 +1,15 @@
 import { GetCoockieFavoritePhotos } from "./coockie.js";
 import CreateThumbnailPhoto from "./thumbnailPhoto.js";
 
+const errorBlock = `
+<div class="flexRow" style="align-items: center;">
+    <img src="/images/error.png">
+    <div class="flexColumn">
+        <h6 class="flexRow">Сервер не отвечает</h6>
+        <p class="flexRow">Уже работаем над этим</p>
+    </div>
+</div>`
+
 export default function CreateUserList(parent) {
     let users = fetch('https://json.medrating.org/users/').then((response) => {
         return response.json();
@@ -11,29 +20,33 @@ export default function CreateUserList(parent) {
     users.then((data) => {
         parent.className = ''
         parent.innerHTML = ''
-        parent.className = 'padding: 16px 0'
+        parent.style = 'padding: 16px 0'
 
         data.forEach(user => {
-            let newLine = CreateDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id, (data, parent) => data.forEach(album => {
-                parent.append(CreateDropOutLine(album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
-                    (data, parent) => {
-                        parent.className = 'thumbnailPhotoArea'
-                        let favoriteids = GetCoockieFavoritePhotos().map((photo) => { return photo.id })
-                        data.forEach(photoData => {
-                            let photoEl = CreateThumbnailPhoto(photoData, favoriteids.includes(photoData.id))
-                            parent.append(photoEl)
-                            photoEl.title = photoData.title
-                        })
-                    }))
-            }
-            ));
+            let newLine = CreateDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
+
+                (data, parent) => data.forEach(album => {
+                    parent.append(CreateDropOutLine(album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
+                        (data, parent) => {
+                            parent.className = 'thumbnailPhotoArea'
+                            let favoriteids = GetCoockieFavoritePhotos().map((photo) => { return photo.id })
+                            data.forEach(photoData => {
+                                let photoEl = CreateThumbnailPhoto(photoData, favoriteids.includes(photoData.id))
+                                parent.append(photoEl)
+                                photoEl.title = photoData.title
+                            })
+                        }
+                    ))
+                })
+                );
 
             parent.append(newLine)
         })
-    }, error => {
+    })
+
+    users.catch(() => {
         parent.innerHTML = errorBlock
-    }
-    );
+    })
 }
 
 function CreateDropOutLine(innerText, tagText, requestUrl, GenerateContent) {
@@ -61,6 +74,7 @@ function CreateDropOutLine(innerText, tagText, requestUrl, GenerateContent) {
             container.append(dropped)
             dropped.className = 'dropped flexCenter'
             dropped.append(CreateLoadCicle())
+
             let albums = fetch(requestUrl).then((response) => {
                 return response.json();
             })
@@ -70,10 +84,11 @@ function CreateDropOutLine(innerText, tagText, requestUrl, GenerateContent) {
                 dropped.innerHTML = ''
 
                 GenerateContent(data, dropped)
-            }
-                , error => {
-                    dropped.innerHTML = errorBlock
-                })
+            })
+
+            albums.catch(() => {
+                dropped.innerHTML = errorBlock
+            })
         }
         else {
             marker.src = './images/openMarker.svg'
@@ -88,4 +103,7 @@ function CreateLoadCicle() {
     cicle.className = 'loadCicle'
     cicle.src = './images/ezgif-6-72ed6200d8f7.gif'
     return cicle
+}
+function asd() {
+    return new Promise((resolve, reject) => { return reject() })
 }

@@ -1,6 +1,15 @@
 import { GetCoockieFavoritePhotos } from "./coockie.js";
 import CreateThumbnailPhoto from "./thumbnailPhoto.js";
 
+const errorBlock = `
+<div class="flexRow" style="align-items: center;">
+    <img src="/images/error.png">
+    <div class="flexColumn">
+        <h6 class="flexRow">Сервер не отвечает</h6>
+        <p class="flexRow">Уже работаем над этим</p>
+    </div>
+</div>`
+
 export default function CreateFavoritesList(parent) {
     let container = document.createElement('div')
 

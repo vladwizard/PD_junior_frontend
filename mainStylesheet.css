@@ -6,8 +6,6 @@ body {
 
     font-family: "Roboto";
     font-style: normal;
-    display: flex;
-    justify-content: center;
     padding: 56px 0;
 }
 * {
