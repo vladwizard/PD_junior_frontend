@@ -11,7 +11,7 @@ export default function CreateUserList(parent) {
     users.then((data) => {
         parent.className = ''
         parent.innerHTML = ''
-        parent.className= 'padding: 16px 0'
+        parent.className = 'padding: 16px 0'
 
         data.forEach(user => {
             let newLine = CreateDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id, (data, parent) => data.forEach(album => {
@@ -53,7 +53,7 @@ function CreateDropOutLine(innerText, tagText, requestUrl, GenerateContent) {
     text.innerText = innerText
     textLine.append(text)
 
-    textLine.onclick = () => {
+    marker.onclick = () => {
         if (container.childElementCount == 1) {
             marker.src = './images/closeMarker.svg'
 
