@@ -24,6 +24,7 @@ export default function CreateFavoritesList(parent) {
             container.append(cellPhoto)
             cellPhoto.append(CreateThumbnailPhoto(photo, true))
             cellPhoto.querySelector('.favoriteButton').addEventListener('click', () => cellPhoto.remove())
+
             let title = document.createElement('p')
             title.innerText = photo.title
             title.className = 'titleThumbilPhoto'

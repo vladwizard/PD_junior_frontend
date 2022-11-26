@@ -15,10 +15,12 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
     photoEl.onclick = () => {
 
         document.body.style = 'overflow:hidden; height: 100vh;'
+
         let frontScreen = document.createElement('div')
         document.body.append(frontScreen)
         frontScreen.className = 'foggingScreen flexCenter'
         frontScreen.style = 'top:' + self.pageYOffset + 'px'
+
         let escapeButton = document.createElement('button')
         frontScreen.append(escapeButton)
         escapeButton.onclick = () => {
@@ -31,8 +33,8 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
         photoFullRes.src = photo.url
     }
     let favoriteButton = document.createElement('div')
-    favoriteButton.title = ''
     photoEl.append(favoriteButton);
+    favoriteButton.title = ''
     favoriteButton.innerHTML = filledStar
     favoriteButton.className = 'favoriteButton flexCenter'
 
