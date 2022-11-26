@@ -18,9 +18,9 @@ export default function CreateUserList(parent) {
     parent.className = 'flexCenter'
 
     users.then((data) => {
-        parent.className = ''
+        parent.className = 'userList'
         parent.innerHTML = ''
-        parent.style = 'padding: 16px 0px 16px 8px'
+
         data.forEach(user => {
             let newLine = CreateDropOutLine(1, user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
 

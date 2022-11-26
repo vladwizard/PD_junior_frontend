@@ -11,21 +11,24 @@ const errorBlock = `
 </div>`
 
 export default function CreateFavoritesList(parent) {
-    let container = document.createElement('div')
+
 
     let photos = GetCoockieFavoritePhotos()
 
     if (photos.length == 0) {
-        parent.className = 'flexCenter'
-        container.className = 'favoritesListEmty flexColumn'
-        container.innerHTML = `
-        <img src="./images//empty.png">
-        <h6>Список избранного пуст</h6>
-        <p>Добавляйте изображения, нажимая на звёздочку</p>
+
+        parent.innerHTML = `
+        <div class="favoritesListEmty flexColumn">
+            <img src="./images//empty.png">
+            <h6>Список избранного пуст</h6>
+            <p>Добавляйте изображения, нажимая на звёздочку</p>
+        </div>
         `
     }
     else {
-        parent.style = 'padding-top: 48px'
+        let container = document.createElement('div')
+        parent.append(container)
+        parent.className = 'favoriteList'
         container.className = 'thumbnailPhotoArea'
 
         photos.forEach(photo => {
@@ -39,7 +42,5 @@ export default function CreateFavoritesList(parent) {
             title.className = 'titleThumbilPhoto'
             cellPhoto.append(title)
         })
-    }
-    parent.append(container)
-
+    }  
 }
