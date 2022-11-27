@@ -8,13 +8,13 @@ export function SetCoockieFavoritePhotos(ArrayPhoto) {
     setCookie('photos', JSON.stringify(ArrayPhoto), { secure: false, 'max-age': 3600 })
 }
 
-function getCookie(name) {
+function GetCookie(name) {
     let matches = document.cookie.match(new RegExp(
         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined
 }
-function setCookie(name, value, options = {}) {
+function SetCookie(name, value, options = {}) {
 
     options = {
         path: '/',

@@ -15,19 +15,7 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
     photoEl.className = 'thumbnailPhoto'
     photoEl.onclick = () => {
 
-        document.body.style = 'overflow:hidden; height: 100vh;'
-
-        let frontScreen = document.createElement('div')
-        document.body.append(frontScreen)
-        frontScreen.className = 'foggingScreen flexCenter'
-        frontScreen.style = 'top:' + self.pageYOffset + 'px'
-
-        let escapeButton = document.createElement('button')
-        frontScreen.append(escapeButton)
-        escapeButton.onclick = () => {
-            frontScreen.remove()
-            document.body.style = ''
-        }
+        let frontScreen = CreateFogginScreen()
 
         let photoFullRes = document.createElement('img')
         frontScreen.append(photoFullRes)
@@ -60,7 +48,7 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
         } else {
             favoritePhotos.push(photo)
 
-            favoriteButton.children[0].style = 'fill: #FFAF37;'
+            favoriteButton.children[0].style = activeStarStyle
 
 
         }
@@ -68,4 +56,20 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
 
     }
     return photoEl
+}
+function CreateFogginScreen(){
+    document.body.style = 'overflow:hidden; height: 100vh;'
+
+    let fogginScreen = document.createElement('div')
+    document.body.append(fogginScreen)
+    fogginScreen.className = 'foggingScreen flexCenter'
+    fogginScreen.style = 'top:' + self.pageYOffset + 'px'
+
+    let escapeButton = document.createElement('button')
+    fogginScreen.append(escapeButton)
+    escapeButton.onclick = () => {
+        fogginScreen.remove()
+        document.body.style = ''
+    }
+    return fogginScreen
 }
