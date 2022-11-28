@@ -1,20 +1,20 @@
-export function GetCoockieFavoritePhotos() {
+export function getCoockieFavoritePhotos() {
     let coockieValue = getCookie('photos')
     if (coockieValue) return JSON.parse(coockieValue)
     else return []
 
 }
-export function SetCoockieFavoritePhotos(ArrayPhoto) {
+export function setCoockieFavoritePhotos(ArrayPhoto) {
     setCookie('photos', JSON.stringify(ArrayPhoto), { secure: false, 'max-age': 3600 })
 }
 
-function GetCookie(name) {
+function getCookie(name) {
     let matches = document.cookie.match(new RegExp(
         "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
     return matches ? decodeURIComponent(matches[1]) : undefined
 }
-function SetCookie(name, value, options = {}) {
+function setCookie(name, value, options = {}) {
 
     options = {
         path: '/',

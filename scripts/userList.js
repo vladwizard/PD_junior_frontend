@@ -1,5 +1,5 @@
-import { GetCoockieFavoritePhotos } from "./coockie.js";
-import CreateThumbnailPhoto from "./thumbnailPhoto.js";
+import { getCoockieFavoritePhotos } from "./coockie.js";
+import createThumbnailPhoto from "./thumbnailPhoto.js";
 
 const errorBlock = `
 <div class="flexRow" style="align-items: center;">
@@ -10,11 +10,11 @@ const errorBlock = `
     </div>
 </div>`
 
-export default function CreateUserList(parent) {
+export default function createUserList(parent) {
     let users = fetch('https://json.medrating.org/users/').then((response) => {
         return response.json();
     })
-    parent.append(CreateLoadCicle())
+    parent.append(createLoadCicle())
     parent.className = 'flexCenter'
 
     users.then((data) => {
@@ -22,26 +22,28 @@ export default function CreateUserList(parent) {
         parent.innerHTML = ''
 
         data.forEach(user => {
-            let newLine = CreateDropOutLine(1, user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
+            let newLine = createDropOutLine(1, user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
 
                 (data, parent) => data.forEach(album => {
-                    parent.append(CreateDropOutLine(2, album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
+                    parent.append(createDropOutLine(2, album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
+
                         (data, parent) => {
                             parent.className = 'thumbnailPhotoArea'
-                            let favoriteids = GetCoockieFavoritePhotos().map((photo) => { return photo.id })
+                            let favoriteids = getCoockieFavoritePhotos().map((photo) => { return photo.id })
                             data.forEach(photoData => {
-                                let photoEl = CreateThumbnailPhoto(photoData, favoriteids.includes(photoData.id))
+                                let photoEl = createThumbnailPhoto(photoData, favoriteids.includes(photoData.id))
                                 parent.append(photoEl)
                                 photoEl.title = photoData.title
                             })
                         }
+
                     ))
                 })
 
             );
-
             parent.append(newLine)
         })
+
     })
 
     users.catch(() => {
@@ -49,7 +51,7 @@ export default function CreateUserList(parent) {
     })
 }
 
-function CreateDropOutLine(attachmentIndex, innerText, tagText, requestUrl, GenerateContent) {
+function createDropOutLine(attachmentIndex, innerText, tagText, requestUrl, generateContent) {
     let container = document.createElement('div')
     container.className = "flexColumn"
 
@@ -74,7 +76,7 @@ function CreateDropOutLine(attachmentIndex, innerText, tagText, requestUrl, Gene
             let dropped = document.createElement('div')
             container.append(dropped)
             dropped.className = 'dropped flexCenter'
-            dropped.append(CreateLoadCicle())
+            dropped.append(createLoadCicle())
 
             let albums = fetch(requestUrl).then((response) => {
                 return response.json();
@@ -84,7 +86,7 @@ function CreateDropOutLine(attachmentIndex, innerText, tagText, requestUrl, Gene
                 dropped.className = 'dropped'
                 dropped.innerHTML = ''
 
-                GenerateContent(data, dropped)
+                generateContent(data, dropped)
             })
 
             albums.catch(() => {
@@ -99,7 +101,7 @@ function CreateDropOutLine(attachmentIndex, innerText, tagText, requestUrl, Gene
     }
     return container
 }
-function CreateLoadCicle() {
+function createLoadCicle() {
     let cicle = document.createElement('img')
     cicle.className = 'loadCicle'
     cicle.src = './images/ezgif-6-72ed6200d8f7.gif'

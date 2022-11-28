@@ -1,5 +1,5 @@
-import { GetCoockieFavoritePhotos } from "./coockie.js";
-import { SetCoockieFavoritePhotos } from "./coockie.js";
+import { getCoockieFavoritePhotos } from "./coockie.js";
+import { setCoockieFavoritePhotos } from "./coockie.js";
 
 const filledStar = `
 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -9,13 +9,13 @@ const filledStar = `
 </svg>`
 const activeStarStyle = 'fill: #FFAF37;'
 
-export default function CreateThumbnailPhoto(photo, isFavorite) {
+export default function createThumbnailPhoto(photo, isFavorite) {
     let photoEl = document.createElement('div')
     photoEl.style = 'background: url(' + photo.thumbnailUrl + ');'
     photoEl.className = 'thumbnailPhoto'
     photoEl.onclick = () => {
 
-        let frontScreen = CreateFogginScreen()
+        let frontScreen = createFogginScreen()
 
         let photoFullRes = document.createElement('img')
         frontScreen.append(photoFullRes)
@@ -36,7 +36,7 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
         event.stopPropagation()
 
 
-        let favoritePhotos = GetCoockieFavoritePhotos()
+        let favoritePhotos = getCoockieFavoritePhotos()
         let favoritesIds = favoritePhotos.map((photo) => { return photo.id })
 
         let index = favoritesIds.indexOf(photo.id)
@@ -52,12 +52,12 @@ export default function CreateThumbnailPhoto(photo, isFavorite) {
 
 
         }
-        SetCoockieFavoritePhotos(favoritePhotos)
+        setCoockieFavoritePhotos(favoritePhotos)
 
     }
     return photoEl
 }
-function CreateFogginScreen(){
+function createFogginScreen() {
     document.body.style = 'overflow:hidden; height: 100vh;'
 
     let fogginScreen = document.createElement('div')
