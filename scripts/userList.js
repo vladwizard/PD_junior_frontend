@@ -22,13 +22,14 @@ export default function createUserList(parent) {
         parent.innerHTML = ''
 
         data.forEach(user => {
-            let newLine = createDropOutLine(1, user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
+            let newLine = createDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
 
                 (data, parent) => data.forEach(album => {
-                    parent.append(createDropOutLine(2, album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
+                    parent.append(createDropOutLine(album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
 
                         (data, parent) => {
                             parent.className = 'thumbnailPhotoArea'
+
                             let favoriteids = getCoockieFavoritePhotos().map((photo) => { return photo.id })
                             data.forEach(photoData => {
                                 let photoEl = createThumbnailPhoto(photoData, favoriteids.includes(photoData.id))
@@ -51,14 +52,13 @@ export default function createUserList(parent) {
     })
 }
 
-function createDropOutLine(attachmentIndex, innerText, tagText, requestUrl, generateContent) {
+function createDropOutLine(innerText, tagText, requestUrl, generateContent) {
     let container = document.createElement('div')
-    container.className = "flexColumn"
+    container.className = "flexColumn dropOutLine"
 
     let textLine = document.createElement('div')
     container.append(textLine)
-    textLine.className = 'dropOutLine'
-    textLine.style = 'margin-left:' + 64 * attachmentIndex + 'px'
+    textLine.className = 'dropOutLineContent'
 
     let marker = document.createElement('img')
     marker.className = 'marker'
