@@ -3,6 +3,7 @@ import createFavoritesList from "./scripts/favoriteList.js";
 
 const wrapper = document.getElementById('mainBlock');
 const sectionsButtons = Array.from(wrapper.children[0].children);
+const container = wrapper.children[1];
 
 sectionsButtons.forEach(
     (element, index) => { element.onclick = (() => chooseSection(index)) }
@@ -16,7 +17,6 @@ function chooseSection(index) {
 
     if (index != lastSectionIndex) {
         sectionsButtons[lastSectionIndex].className = ''
-        lastSectionIndex = index
 
         sectionsButtons[index].className = 'active'
 
@@ -31,8 +31,10 @@ function chooseSection(index) {
                 content = createFavoritesList();
                 break;
         }
-        wrapper.append(content)
+        container.append(content)
+
         lastContent = content
+        lastSectionIndex = index
     }
 
 }

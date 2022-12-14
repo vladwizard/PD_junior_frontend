@@ -13,13 +13,13 @@ export default function createFavoritesList() {
     }
 }
 function createEmptyBlock(){
-    let a = document.createElement('div')
-    a.innerHTML = `
+    let div = document.createElement('div')
+    div.innerHTML = `
     <div class="favoritesListEmty flexColumn">
         <img src="./images//empty.png">
         <h6>Список избранного пуст</h6>
         <p>Добавляйте изображения, нажимая на звёздочку</p>
     </div>
     `
-    return a
+    return div
 }

@@ -2,14 +2,14 @@ import createPhotosBlock from "./PhotosArea.js";
 
 function createErrorBlock() {
 
-    let a = document.createElement('div')
-    a.append((document.querySelector('#errorBlock').content.cloneNode(true)))
-    return a
+    let div = document.createElement('div')
+    div.append((document.querySelector('#errorBlock').content.cloneNode(true)))
+    return div
 }
 function createLoadBlock() {
-    let a = document.createElement('div')
-    a.append((document.querySelector('#loadBlock').content.cloneNode(true)))
-    return a
+    let div = document.createElement('div')
+    div.append((document.querySelector('#loadBlock').content.cloneNode(true)))
+    return div
 
 }
 
