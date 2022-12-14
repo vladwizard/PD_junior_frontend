@@ -21,10 +21,13 @@ export default function createUserList() {
     })
     let loadBlock = createLoadBlock()
     parent.append(loadBlock)
+    parent.style = 'min-height: inherit;'
     parent.className = 'flexCenter'
 
     users.then((data) => {
+        parent.style = ''
         parent.className = 'userList'
+
         loadBlock.remove()
 
         data.forEach(user => {
