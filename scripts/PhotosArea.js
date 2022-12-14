@@ -9,7 +9,27 @@ const filledStar = `
 </svg>`
 const activeStarStyle = 'fill: #FFAF37;'
 
-export default function createThumbnailPhoto(photo, isFavorite) {
+export default function createPhotosBlock(data, deleteClicking = true, allIsFavorite = true) {
+    let container = document.createElement('div')
+    container.className = 'thumbnailPhotoArea'
+
+    let favoriteids
+    if (!allIsFavorite) {
+        favoriteids = getCoockieFavoritePhotos().map((photo) => { return photo.id })
+    }
+    data.forEach(photoData => {
+        let photoEl = createThumbnailPhoto(photoData, allIsFavorite ? true : favoriteids.includes(photoData.id))
+        if(deleteClicking)
+        photoEl.querySelector('.favoriteButton').addEventListener('click', () => photoEl.remove())
+
+        container.append(photoEl)
+        photoEl.title = photoData.title
+    })
+
+    return container
+}
+
+function createThumbnailPhoto(photo, isFavorite) {
     let photoEl = document.createElement('div')
     photoEl.style = 'background: url(' + photo.thumbnailUrl + ');'
     photoEl.className = 'thumbnailPhoto'

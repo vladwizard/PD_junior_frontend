@@ -1,25 +1,31 @@
-import { getCoockieFavoritePhotos } from "./coockie.js";
-import createThumbnailPhoto from "./thumbnailPhoto.js";
+import createPhotosBlock from "./PhotosArea.js";
 
-const errorBlock = `
-<div class="flexRow" style="align-items: center;">
-    <img src="/images/error.png">
-    <div class="flexColumn">
-        <h6 class="flexRow">Сервер не отвечает</h6>
-        <p class="flexRow">Уже работаем над этим</p>
-    </div>
-</div>`
+function createErrorBlock() {
 
-export default function createUserList(parent) {
+    let a = document.createElement('div')
+    a.append((document.querySelector('#errorBlock').content.cloneNode(true)))
+    return a
+}
+function createLoadBlock() {
+    let a = document.createElement('div')
+    a.append((document.querySelector('#loadBlock').content.cloneNode(true)))
+    return a
+
+}
+
+export default function createUserList() {
+    let parent = document.createElement('div')
+
     let users = fetch('https://json.medrating.org/users/').then((response) => {
         return response.json();
     })
-    parent.append(createLoadCicle())
+    let loadBlock = createLoadBlock()
+    parent.append(loadBlock)
     parent.className = 'flexCenter'
 
     users.then((data) => {
         parent.className = 'userList'
-        parent.innerHTML = ''
+        loadBlock.remove()
 
         data.forEach(user => {
             let newLine = createDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
@@ -28,14 +34,7 @@ export default function createUserList(parent) {
                     parent.append(createDropOutLine(album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
 
                         (data, parent) => {
-                            parent.className = 'thumbnailPhotoArea'
-
-                            let favoriteids = getCoockieFavoritePhotos().map((photo) => { return photo.id })
-                            data.forEach(photoData => {
-                                let photoEl = createThumbnailPhoto(photoData, favoriteids.includes(photoData.id))
-                                parent.append(photoEl)
-                                photoEl.title = photoData.title
-                            })
+                            parent.append(createPhotosBlock(data, false, false))
                         }
 
                     ))
@@ -50,6 +49,7 @@ export default function createUserList(parent) {
     users.catch(() => {
         parent.innerHTML = errorBlock
     })
+    return parent
 }
 
 function createDropOutLine(innerText, tagText, requestUrl, generateContent) {
@@ -69,44 +69,34 @@ function createDropOutLine(innerText, tagText, requestUrl, generateContent) {
     text.innerText = innerText
     textLine.append(text)
 
+    let isClose = true;
     marker.onclick = () => {
-        if (container.childElementCount == 1) {
+        if (isClose) {
             marker.src = './images/closeMarker.svg'
 
-            let dropped = document.createElement('div')
-            container.append(dropped)
-            dropped.className = 'dropped flexCenter'
-            dropped.append(createLoadCicle())
+            let loadBlock = createLoadBlock()
+            container.append(loadBlock)
 
-            let albums = fetch(requestUrl).then((response) => {
-                return response.json();
-            })
+            let response = fetch(requestUrl).then(
+                (result) => {
+                    return result.json();
+                }
+            )
 
-            albums.then(data => {
-                dropped.className = 'dropped'
-                dropped.innerHTML = ''
-
-                generateContent(data, dropped)
-            })
-
-            albums.catch(() => {
-                dropped.innerHTML = errorBlock
-            })
+            response.then(data => { generateContent(data, container) })
+            response.catch(() => container.append(createErrorBlock()))
+            response.finally(() => loadBlock.remove())
         }
         else {
             marker.src = './images/openMarker.svg'
-            for (let i = 1; i < container.childElementCount; i++)
-                container.children[i].remove()
+
+            while (container.childElementCount != 1) {
+                container.lastChild.remove()
+            }
+
         }
+        isClose = !isClose
     }
+
     return container
-}
-function createLoadCicle() {
-    let cicle = document.createElement('img')
-    cicle.className = 'loadCicle'
-    cicle.src = './images/ezgif-6-72ed6200d8f7.gif'
-    return cicle
-}
-function asd() {
-    return new Promise((resolve, reject) => { return reject() })
 }

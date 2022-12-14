@@ -2,32 +2,37 @@ import createUserList from "./scripts/userList.js";
 import createFavoritesList from "./scripts/favoriteList.js";
 
 const wrapper = document.getElementById('mainBlock');
-const sectionsButtons = wrapper.children[0].children;
-const mainContainer = wrapper.children[1];
+const sectionsButtons = Array.from(wrapper.children[0].children);
 
-Array.from(sectionsButtons).forEach(
+sectionsButtons.forEach(
     (element, index) => { element.onclick = (() => chooseSection(index)) }
 )
 
-let lastSectionIndex = 0
-chooseSection(lastSectionIndex);
+let lastSectionIndex = 1;
+let lastContent = null;
+chooseSection(0);
 
 function chooseSection(index) {
-    Array.from(sectionsButtons)[lastSectionIndex].className = ''
-    lastSectionIndex = index
 
-    sectionsButtons[index].className = 'active'
+    if (index != lastSectionIndex) {
+        sectionsButtons[lastSectionIndex].className = ''
+        lastSectionIndex = index
 
-    mainContainer.style = ''
-    mainContainer.className = ''
-    mainContainer.innerHTML = ''
+        sectionsButtons[index].className = 'active'
 
-    switch (index) {
-        case 0:
-            createUserList(mainContainer)
-            break;
-        case 1:
-            createFavoritesList(mainContainer)
-            break;
+        if (lastContent != null) lastContent.remove()
+
+        let content;
+        switch (index) {
+            case 0:
+                content = createUserList();
+                break;
+            case 1:
+                content = createFavoritesList();
+                break;
+        }
+        wrapper.append(content)
+        lastContent = content
     }
+
 }
