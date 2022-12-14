@@ -6,14 +6,10 @@ export default function createFavoritesList(parent) {
     let photos = getCoockieFavoritePhotos()
 
     if (photos.length == 0) {
-
-        parent.innerHTML = `
-        <div class="favoritesListEmty flexColumn">
-            <img src="./images//empty.png">
-            <h6>Список избранного пуст</h6>
-            <p>Добавляйте изображения, нажимая на звёздочку</p>
-        </div>
-        `
+        let a= Date.now();
+        let element = document.querySelector('#favoritesListEmty').content.cloneNode(true);
+        parent.append(element);
+        console.log(Date.now()-a);
     }
     else {
         let container = document.createElement('div')
