@@ -6,7 +6,6 @@ export default function createFavoritesList(parent) {
     let photos = getCoockieFavoritePhotos()
 
     if (photos.length == 0) {
-
         parent.innerHTML = `
         <div class="favoritesListEmty flexColumn">
             <img src="./images//empty.png">
