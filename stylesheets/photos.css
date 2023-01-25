@@ -1,0 +1,35 @@
+.thumbnailPhotoArea {
+  margin: 0 auto;
+  width: 534px;
+  padding: 32px 0;
+
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  gap: 42px;
+}
+.thumbnailPhoto {
+  width: 150px;
+  height: 150px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.titleThumbilPhoto {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+
+  color: #787878;
+}
+
+.favoriteButton {
+  width: 32px;
+  height: 32px;
+  background: white;
+
+  margin: 8px;
+  border-radius: 50%;
+}
+.favoriteButton > svg {
+  fill: #d0d0d0;
+}
