@@ -2,36 +2,50 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="commonStylesheet.css">
+  <link rel="stylesheet" href="stylesheets/index.css">
+  <link rel="stylesheet" href="stylesheets/commonStylesheet.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/components/mainBlock/mainBlock.css">
+
+  <link rel="stylesheet" href="/components/photos/photos.css">
+  <link rel="stylesheet" href="/components/catalog/catalog.css">
+
+  <link rel="stylesheet" href="/components/favorites/favoriteList.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width">
 </head>
 
 <body class="flexCenter">
-    <div id="mainBlock" class="flexColumn">
-        <header>
-            <button>Каталог</button>
-            <button>
-                <img src="./images/star.svg">
-                Избранное
-            </button>
-        </header>
-        <section>
-        </section>
+  <div id="mainBlock" class="flexColumn">
+    <header>
+      <button>Каталог</button>
+      <button>
+        <img src="./images/star.svg">
+        Избранное
+      </button>
+    </header>
+    <main>
 
-        <template id="favoritesListEmty">
-            <div class="favoritesListEmty flexColumn">
-                <img src="./images//empty.png">
-                <h6>Список избранного пуст</h6>
-                <p>Добавляйте изображения, нажимая на звёздочку</p>
-            </div>
-        </template>
-        <script type="module" src="mainBlock.js"></script>
+    </main>
+    <script type="module" src="/components/mainBlock/mainBlock.js"></script>
 
-    </div>
-
+    <template id='errorBlock'>
+      <div class="flexRow" style="align-items: center;">
+        <img src="/images/error.png">
+        <div class="flexColumn">
+          <h6 class="flexRow">Сервер не отвечает</h6>
+          <p class="flexRow">Уже работаем над этим</p>
+        </div>
+      </div>
+    </template>
+    
+    <template id='loadBlock'>
+      <img class="loadCicle" src="./images/ezgif-6-72ed6200d8f7.gif">
+    </template>
 </body>
 
 </html>

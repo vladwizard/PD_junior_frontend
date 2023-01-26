@@ -1,5 +1,6 @@
-import { getCoockieFavoritePhotos } from "./coockie.js";
-import createPhotosBlock from "./PhotosArea.js";
+import { getCoockieFavoritePhotos } from "/scripts/coockie.js";
+
+import createPhotosBlock from "../photos/PhotosArea.js";
 
 export default function createFavoritesList() {
 

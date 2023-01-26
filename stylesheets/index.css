@@ -1,0 +1,36 @@
+html {
+  /* антисмещение при появлении scrollbar */
+  margin-right: calc(-1 * (100vw - 100%));
+  overflow-x: hidden;
+
+  font-family: "Roboto";
+  font-style: normal;
+}
+body {
+  background: #e4eff7;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 130%;
+}
+h2 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+}
+h6 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 130%;
+}
+p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 130%;
+}
