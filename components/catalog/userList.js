@@ -1,4 +1,4 @@
-import createPhotosBlock from "./PhotosArea.js";
+import createPhotosBlock from "../photos/PhotosArea.js";
 
 function createErrorBlock() {
 
@@ -31,10 +31,10 @@ export default function createUserList() {
         loadBlock.remove()
 
         data.forEach(user => {
-            let newLine = createDropOutLine(user.name, 'h1', 'https://json.medrating.org/albums?userId=' + user.id,
+            let newLine = createDropOutLine(`<h1>${user.name}</h1>`, 'https://json.medrating.org/albums?userId=' + user.id,
 
                 (data, parent) => data.forEach(album => {
-                    parent.append(createDropOutLine(album.title, 'h2', 'https://json.medrating.org/photos?albumId=' + album.id,
+                    parent.append(createDropOutLine(`<h2>${album.title}</h2>`, 'https://json.medrating.org/photos?albumId=' + album.id,
 
                         (data, parent) => {
                             parent.append(createPhotosBlock(data, false, false))
@@ -55,7 +55,7 @@ export default function createUserList() {
     return parent
 }
 
-function createDropOutLine(innerText, tagText, requestUrl, generateContent) {
+function createDropOutLine(htmlContent, requestUrl, generateContent) {
     let container = document.createElement('div')
     container.className = "flexColumn dropOutLine"
 
@@ -68,9 +68,7 @@ function createDropOutLine(innerText, tagText, requestUrl, generateContent) {
     marker.src = './images/openMarker.svg'
     textLine.append(marker);
 
-    let text = document.createElement(tagText)
-    text.innerText = innerText
-    textLine.append(text)
+    textLine.insertAdjacentHTML('beforeend', htmlContent);
 
     let isClose = true;
     marker.onclick = () => {
