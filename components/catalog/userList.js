@@ -30,22 +30,21 @@ export default function createUserList() {
     loadBlock.remove()
 
     userData.forEach(user => {
-      let newLine = createDropOutLine(`<h1>${user.name}</h1>`, 'https://json.medrating.org/albums?userId=' + user.id,
+      let newLine = createDropOutLine(`<h1>${user.name}</h1>`, ('https://json.medrating.org/albums?userId=' + user.id),
 
-        (data) => {
+        (dataAlbums) => {
           let container = new DocumentFragment()
 
-          data.forEach(album => {
-            container.append(createDropOutLine(`<h2>${album.title}</h2>`, 'https://json.medrating.org/photos?albumId=' + album.id,
+          dataAlbums.forEach(album => {
+            container.append(createDropOutLine(`<h2>${album.title}</h2>`, ('https://json.medrating.org/photos?albumId=' + album.id),
 
-              (data) => createPhotosBlock(data, false, false)
+              (photosData) => createPhotosBlock(photosData, false, false)
 
             ))
           })
-          
+
           return container
         }
-
       );
       parent.append(newLine)
     })

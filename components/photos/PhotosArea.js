@@ -9,87 +9,84 @@ const filledStar = `
 </svg>`
 const activeStarStyle = 'fill: #FFAF37;'
 
-export default function createPhotosBlock(data, deleteClicking = true, allIsFavorite = true) {
-    let container = document.createElement('div')
-    container.className = 'thumbnailPhotoArea'
+export default function createPhotosBlock(data) {
+  let container = document.createElement('div')
+  container.className = 'thumbnailPhotoArea'
 
-    let favoriteids
-    if (!allIsFavorite) {
-        favoriteids = getCoockieFavoritePhotos().map((photo) => { return photo.id })
-    }
-    data.forEach(photoData => {
-        let photoEl = createThumbnailPhoto(photoData, allIsFavorite ? true : favoriteids.includes(photoData.id))
-        if(deleteClicking)
-        photoEl.querySelector('.favoriteButton').addEventListener('click', () => photoEl.remove())
+  let favoriteids = getCoockieFavoritePhotos().map((photo) => { return photo.id })
 
-        container.append(photoEl)
-        photoEl.title = photoData.title
-    })
+  data.forEach(photoData => {
+    let photoEl = createThumbnailPhoto(photoData, favoriteids.includes(photoData.id))
 
-    return container
+    container.append(photoEl)
+    photoEl.title = photoData.title
+  }
+  )
+
+  return container
 }
 
-function createThumbnailPhoto(photo, isFavorite) {
-    let photoEl = document.createElement('div')
-    photoEl.style = 'background: url(' + photo.thumbnailUrl + ');'
-    photoEl.className = 'thumbnailPhoto'
-    photoEl.onclick = () => {
+export function createThumbnailPhoto(photo, isFavorite) {
+  let photoEl = document.createElement('div')
+  photoEl.style = 'background: url(' + photo.thumbnailUrl + ');'
+  photoEl.className = 'thumbnailPhoto'
+  photoEl.onclick = () => {
 
-        let frontScreen = createFogginScreen()
+    let frontScreen = createFogginScreen()
 
-        let photoFullRes = document.createElement('img')
-        frontScreen.append(photoFullRes)
-        photoFullRes.src = photo.url
-    }
-    let favoriteButton = document.createElement('div')
-    photoEl.append(favoriteButton);
-    favoriteButton.title = ''
-    favoriteButton.innerHTML = filledStar
-    favoriteButton.className = 'favoriteButton flexCenter'
-
-
-    if (isFavorite) {
-        favoriteButton.children[0].style = activeStarStyle
-    }
-
-    favoriteButton.onclick = (event) => {
-        event.stopPropagation()
+    let photoFullRes = document.createElement('img')
+    frontScreen.append(photoFullRes)
+    photoFullRes.src = photo.url
+  }
+  let favoriteButton = document.createElement('div')
+  photoEl.append(favoriteButton);
+  favoriteButton.title = ''
+  favoriteButton.innerHTML = filledStar
+  favoriteButton.className = 'favoriteButton flexCenter'
 
 
-        let favoritePhotos = getCoockieFavoritePhotos()
-        let favoritesIds = favoritePhotos.map((photo) => { return photo.id })
+  if (isFavorite) {
+    favoriteButton.children[0].style = activeStarStyle
+  }
 
-        let index = favoritesIds.indexOf(photo.id)
-        if (index != -1) {
-            favoritePhotos.splice(index, 1)
-
-            favoriteButton.children[0].style = ''
-
-        } else {
-            favoritePhotos.push(photo)
-
-            favoriteButton.children[0].style = activeStarStyle
+  favoriteButton.onclick = (event) => {
+    event.stopPropagation()
 
 
-        }
-        setCoockieFavoritePhotos(favoritePhotos)
+    let favoritePhotos = getCoockieFavoritePhotos()
+    let favoritesIds = favoritePhotos.map((photo) => { return photo.id })
+
+    let index = favoritesIds.indexOf(photo.id)
+    if (index != -1) {
+      favoritePhotos.splice(index, 1)
+
+      favoriteButton.children[0].style = ''
+
+    } else {
+      favoritePhotos.push(photo)
+
+      favoriteButton.children[0].style = activeStarStyle
+
 
     }
-    return photoEl
+    setCoockieFavoritePhotos(favoritePhotos)
+
+  }
+  return photoEl
 }
 function createFogginScreen() {
-    document.body.style = 'overflow:hidden; height: 100vh;'
+  document.body.style = 'overflow:hidden; height: 100vh;'
 
-    let fogginScreen = document.createElement('div')
-    document.body.append(fogginScreen)
-    fogginScreen.className = 'foggingScreen flexCenter'
-    fogginScreen.style = 'top:' + self.pageYOffset + 'px'
+  let fogginScreen = document.createElement('div')
+  document.body.append(fogginScreen)
+  fogginScreen.className = 'foggingScreen flexCenter'
+  fogginScreen.style = 'top:' + self.pageYOffset + 'px'
 
-    let escapeButton = document.createElement('button')
-    fogginScreen.append(escapeButton)
-    escapeButton.onclick = () => {
-        fogginScreen.remove()
-        document.body.style = ''
-    }
-    return fogginScreen
+  let escapeButton = document.createElement('button')
+  fogginScreen.append(escapeButton)
+  escapeButton.onclick = () => {
+    fogginScreen.remove()
+    document.body.style = ''
+  }
+  return fogginScreen
 }

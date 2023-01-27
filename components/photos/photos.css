@@ -1,11 +1,16 @@
 .thumbnailPhotoArea {
-  margin: 0 auto;
-  width: 534px;
+
+  width: 100%;
+  justify-content: center;
   padding: 32px 0;
 
   display: grid;
   grid-template-columns: repeat(3, 150px);
+  grid-template-rows: minmax(150px, min-content);
   gap: 42px;
+}
+.thumbnailPhotoArea .cell > *:first-child{
+  margin-bottom: 10px;
 }
 .thumbnailPhoto {
   width: 150px;
@@ -46,6 +51,6 @@
   right: 40px;
   width: 26px;
   height: 26px;
-  background: url("./images/cross.svg");
+  background: url("/images/cross.svg");
   border: none;
 }

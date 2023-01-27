@@ -1,5 +1,6 @@
 .userList {
-  padding: 16px 0px 16px 8px;
+  padding: 16px 0;
+  position: relative;
 }
 .dropOutLineContent {
   min-height: 80px;
@@ -11,10 +12,10 @@
   line-height: 130%;
 }
 
-.dropOutLine .dropOutLineContent {
+.dropOutLine > .dropOutLineContent {
   padding-left: 60px;
 }
-.dropOutLine .dropOutLine .dropOutLineContent {
+.dropOutLine > .dropOutLine > .dropOutLineContent {
   padding-left: 120px;
 }
 .dropOutLineContent .marker {
