@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/components/photos/photos.css">
   <link rel="stylesheet" href="/components/catalog/catalog.css">
 
-  <link rel="stylesheet" href="/components/favorites/favoriteList.css">
+  <link rel="stylesheet" href="/components/favorites/favorites.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,10 +22,10 @@
 <body class="flexCenter">
   <div id="mainBlock" class="flexColumn">
     <header>
-      <button>Каталог</button>
+      <button>Catalog</button>
       <button>
         <img src="./images/star.svg">
-        Избранное
+        Favorites
       </button>
     </header>
     <main>
@@ -42,8 +42,16 @@
         </div>
       </div>
     </template>
-    
+
     <template id='loadBlock'>
+      <style>
+        .loadCicle {
+          width: 48px;
+          height: 48px;
+          display: block;
+          margin: auto;
+        }
+      </style>
       <img class="loadCicle" src="./images/ezgif-6-72ed6200d8f7.gif">
     </template>
 </body>

@@ -1,4 +1,4 @@
-import createPhotosBlock from "../photos/PhotosArea.js";
+import createPhotosBlock from "../photos/photos.js";
 
 function createErrorBlock() {
 

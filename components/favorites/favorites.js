@@ -1,6 +1,6 @@
 import { getCoockieFavoritePhotos } from "/scripts/coockie.js";
 
-import { createThumbnailPhoto } from "../photos/PhotosArea.js";
+import { createThumbnailPhoto } from "../photos/photos.js";
 
 export default function createFavoritesList() {
 

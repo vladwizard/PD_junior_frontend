@@ -1,5 +1,5 @@
-import createUserList from "../catalog/userList.js";
-import createFavoritesList from "../favorites/favoriteList.js";
+import createUserList from "../catalog/catalog.js";
+import createFavoritesList from "../favorites/favorites.js";
 
 class mainBlock {
   root = document.getElementById('mainBlock');
